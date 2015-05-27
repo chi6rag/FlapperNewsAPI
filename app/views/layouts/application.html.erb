@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FlapperNews</title>
+  <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js'></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+
+
+
+</head>
+<body ng-app='flapperNews'>
+
+	Angular Loads? {{1+1 ? true : false}}
+	<div class="row">
+		<div class="container">
+			<ui-view></ui-view>
+		</div>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/ng-template" id='/home.html'>
+		<div class='page-header'>
+      <div class="col-md-6 col-md-offset-3">
+				<h1>Flapper News</h1>
+      </div>
+		</div>
+		<div class="post" ng-controller='MainCtrl'>
+			<div class="container">
+				<div class='row post-wrapper' ng-repeat='post in posts | orderBy:"-upvotes"'>
+					<div class="col-md-2 col-sm-3 col-xs-4 post-image">
+						<img src="http://placehold.it/100x100/2c3e50">
+					</div>
+					<div class="col-md-10 col-sm-9 col-xs-8 post-content">
+						<a href='#/posts/{{$index}}' class='post-title-hyperlink'><h3 class='post-title'>{{ post.title }}</h3></a>
+
+						<h5 class="post-link" ng-show='post.link'>{{ post.link }}</h5>
+						<div class='row container-fluid upvotes-wrapper'>
+							<i class="fa fa-thumbs-o-up" ng-click=incrementUpvotes(post) style="cursor: pointer; cursor: hand;"></i>
+							{{ post.upvotes }}
+							&nbsp;&nbsp;&nbsp;
+							<a href='#/posts/{{$index}}'>
+								<i class="fa fa-comment-o"> 
+									{{post.comments.length>0 ? post.comments.length : 0}}
+								</i>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="row new-post-row-wrapper">
+					<div class="col-md-6 col-sm-8 col-xs-12 new-post-wrapper">
+						<form ng-submit='addpost(title)' class='new-post-form'>
+							<input ng-model='title' placeholder="Title" class="form-control" />
+							<input ng-model='link' placeholder="Link" class="form-control" />
+							<button ng-click="addPost(title);" class='btn btn-primary'>Add Post</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</script>
+	<script type="text/ng-template" id='/posts.html'>
+		<div ng-controller='PostsCtrl' class='posts'>
+			<div class='page-header'>
+				<h3>
+					<a data-ng-show='post.link' href="{{post.link}}">{{post.title}}</a>
+					<span data-ng-hide='post.link'>{{post.title}}<span>
+				</h3>
+			</div>
+
+			<ol class="breadcrumb">
+			  <li><a href='#/home'>Posts</a></li>
+			  <li>{{post.id}}</li>
+			</ol>
+
+			<div ng-repeat='comment in post.comments | orderBy: "-upvotes"' class='col-md-6 col-md-offset-3 comment-wrapper'>
+				<div class='col-md-1 col-sm-2 col-xs-2 user-dp'><img src='http://placehold.it/75x75/2c3e50' /></div>
+				<div class='col-md-10 col-sm-8 col-xs 8 comment-body'>
+					<div class="comment-author">{{comment.author}}</div>
+					{{comment.body}}
+				</div>
+				<div class='col-md-1 col-sm-2 col-xs-2 comment-upvotes'>
+					<i class="fa fa-thumbs-o-up" style="cursor: pointer; cursor: hand;" ng-click='incrementUpvotes(comment)'></i>
+					{{comment.upvotes}}
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-6 col-md-offset-3'>
+					
+					<h4>Join the discussion</h4>
+					<div class='new-comment'>
+						<form class='new-comment-form' ng-submit='addComment()'>
+							<input type='text' placeholder='Your Name' class='new-comment-author form-control' ng-model='commentAuthor' />
+							<textarea placeholder='Leave a message ...' class='new-comment-body form-control' ng-model='commentBody'></textarea>
+							<button class='btn btn-primary'>Share your views</button>
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</script>
+</body>
+</html>

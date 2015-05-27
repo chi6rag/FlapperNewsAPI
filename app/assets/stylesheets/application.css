@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /* common */
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.row {
+	margin-bottom: 1em;
+}
+
+.page-header {
+	text-align: center;
+	border-bottom: 0px;
+	margin-bottom: 7em;
+}
+
+/* end common */
+
+/* home */
+.post-wrapper {
+	border: 1px solid #efefef;
+	padding: 1em;
+}
+
+.post-wrapper:hover {
+	border: 1px solid #fff3c6;
+}
+
+.post-image {
+	min-height: 100px;
+	padding-left: 0px;
+}
+
+.post-content {
+}
+
+.post-image > img {
+	width: 100%; height: auto;
+}
+
+.post-title-hyperlink:hover {
+	text-decoration: none;
+}
+
+.post-title {
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+h5.post-link {
+	color: grey;
+}
+
+.new-post-wrapper {
+	padding-left: 0px;
+}
+
+.new-post-form >input {
+	padding: 1.5em;
+	margin: 0.5em 0.5em 0.5em 0em;
+	border-radius: 2px;
+  border-color: lightgrey;
+}
+
+/* end home */
+
+/* posts/{{id}} */
+.posts > .page-header {
+	margin-bottom: 0px;
+}
+
+.comment-wrapper {
+	border: 1px solid #efefef;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+}
+.comment-wrapper:hover {
+	border: 1px solid #fff3c6;
+}
+
+.user-dp {
+	padding: 0px;
+}
+
+.user-dp > img {
+	width: 100%;
+}
+.comment-body {
+	text-align: justify;
+}
+
+.comment-body > .comment-author {
+	color: rgb(153, 153, 153);
+}
+
+.comment-upvotes {
+	text-align: right;
+	padding-right: 0.3em;
+}
+
+.upvotes-wrapper .fa-comment-o:before {
+  position: relative;
+  bottom: 1px;
+}
+
+.new-comment-author, .new-comment-body {
+	padding: 1.4em;
+	margin-bottom: 1em;
+}
+/* posts/{{id}} */
