@@ -1,0 +1,35 @@
+Contributing in Rails
+
+1. how to contribute into rails
+2. how to understand what goes inside
+3. how to improve core sql skills
+4. how what degree is core algo
+
+* Personality trats a developer must have
+  - You should ask, but you should have done something by yourself
+    before you attempt to ask it to the community
+   * many developers waste time not asking and trying to figure out
+     the problem by themselves which is not a good way to learn
+  - You should have a will to dive deeper - open up the source code
+    and will to understand how the request is flowing
+
+- will to dive deeper
+- don't jump from class 3 to 12
+- strong in ruby
+  construct
+  method
+  inheritance
+  mixin
+  enumerable method
+- test your ruby skills
+  can i understand the ruby of it
+- Rails Source Code: take it slow - it will happen over a period of time
+  understand ajax -> unicorn -> webrick -> puma
+  be very thourough on request response cycle
+  http/oauth standards
+  memtype
+- enumerable module - map, select etc
+- don't remember methods -> just look them up
+
+And learn from awesome people, you have no idea how much you might learn
+being with accomplished people.
